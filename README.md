@@ -1,4 +1,4 @@
-# bicas_fullstack_project
+# Bicas card game counter
 
 Bicas card game counter with full-stack implementation.
 Points counter storing data in a database.
