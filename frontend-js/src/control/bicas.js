@@ -1,7 +1,7 @@
 angular.module("bicas", []);
 angular.module("bicas")
     .controller("bicasCtrl", function ($scope) {
-    $scope.app = "LETS PLAY BICAS!";
+    $scope.app = "LETS PLAY BICAS!"
 
     $scope.rulesEN = {
         intro: [
@@ -40,11 +40,11 @@ angular.module("bicas")
         '- N: n;',
         '- A: 1;'
         ]
-    };
+    }
 
-    $scope.players = [];
+    $scope.players = []
 
-    $scope.playersN = 0;
+    $scope.playersN = 0
 
     $scope.addPlayer = function (player) {
         player.score = "0";
@@ -55,15 +55,50 @@ angular.module("bicas")
         $scope.players.push(angular.copy(player));
         $scope.playersN++;
         delete $scope.player;
-    };
+    }
+
+    $scope.toggleTheme = function () {
+        const theme = document.body.className;
+        var logThemeChanged = document.getElementById("themeChanged");
+        document.body.className = (theme.includes("light"))
+                    ? theme.replace("light", "dark")
+                    : theme.replace("dark", "light");
+        logThemeChanged.textContent = "Theme changet to"
+                    + (document.body.className.includes("light") ? " light" : " dark");
+        logThemeChanged.style.color = document.body.className.includes("light") ? "black" : "white";
+        setTimeout(clearDemo, 2000, logThemeChanged);
+    }
+  
+    clearDemo = function (log) {
+        log.textContent = "";
+    }
+
+    var validatePointsAndCheckboxes = function () {
+        var error = document.getElementById("errorPointsCheckboxes");
+        if ($scope.players.filter(player => player.dealer).length > 1) {
+            error.textContent = "Please select 0 or 1 dealer in checkboxes, only!";
+            error.style.color = "red";
+            setTimeout(clearDemo, 2000, error);
+            return false;
+        }
+        if ($scope.players.filter(player => player.points == "").length > 0) {
+            error.textContent = "Please insert all points (even zero to winner)!";
+            error.style.color = "red";
+            setTimeout(clearDemo, 2000, error);
+            return false;
+        }
+        if ($scope.players.filter(player => player.dealer).length > 1
+                && $scope.players.filter(player => player.points == "").length > 0) {
+            error.textContent = "WTF ARE YOU DOING?!?!";
+            error.style.color = "red";
+            setTimeout(clearDemo, 2000, error);
+            return false;
+        }
+        return true;
+    }
 
     $scope.addPoints = function () {
-        var errorCheckboxes = document.getElementById("errorCheckboxes");
-        if ($scope.players.filter(player => player.dealer).length > 1) {
-            errorCheckboxes.textContent = "Please select 0 or 1 dealer in checkboxes, only!"
-            errorCheckboxes.style.color = "red"
-        } else {
-            errorCheckboxes.textContent = ""
+        if (validatePointsAndCheckboxes()) {
             const specialArray = [420, 422];
             const dealer = ($scope.players.filter(player => player.dealer).length != 0) ? true : false;
             var looser = {name:"", points:"0"};
@@ -100,7 +135,7 @@ angular.module("bicas")
                 });
             }
         }
-    };
+    }
 
     $scope.deletePlayer = function (name) {
         var indexPlayer = $scope.players

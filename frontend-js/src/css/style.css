@@ -1,6 +1,8 @@
+@import 'themes.css';
+
 body {
-    background-color: #ededed;
-    color: #121212;
+    background-color: var(--body-background-color);
+    color: var(--body-text-color);
     display: grid;
     justify-content: center;
 }
@@ -46,23 +48,24 @@ table {
     width: fit-content;
 }
 
+tr:nth-child(even) {
+    background-color: var(--table-even-background-color);
+}
+
+tr:nth-child(odd) {
+    background-color: var(--table-odd-background-color);
+}
+
 td,
 th {
-    border: 1px solid #000000;
+    border: 1px solid;
+    border-color: var(--table-border-color);
     text-align: center;
     padding: 8px;
 }
 
-tr:nth-child(odd) {
-    background-color: #be9a2a;
-}
-
-tr:nth-child(even) {
-    background-color: #9c7600;
-}
-
 .division {
-    background-color: #d3b76e;
+    background-color: var(--division-background-color);
     display: grid;
     justify-content: center;
     width: fit-content;
@@ -78,8 +81,17 @@ tr:nth-child(even) {
 }
 
 .form-points {
+    background-color: var(--addptn-input-background-color);
+    border-color: var(--addptn-input-border-color);
+    color: var(--addptn-input-text-color);
     width: 50px;
     text-align: center;
+}
+
+.form-player {
+    background-color: var(--addplr-input-background-color);
+    border-color: var(--addplr-input-border-color);
+    color: var(--addplr-input-text-color);
 }
 
 .btn {
@@ -91,24 +103,43 @@ tr:nth-child(even) {
 }
 
 .deletebtn {
-    background-color: red;
-    border-color: darkred;
+    background-color: var(--delete-button-background-color);
+    border-color: var(--delete-button-border-color);
+    color: var(--delete-button-text-color);
     border: 0;
     padding: 5px;
 }
 
 #errorCheckboxes,
-.addpointsbtn {
+#themeChanged,
+.addpointsbtn,
+.themebtn {
     justify-self: right;
 }
 
+#errorCheckboxes,
+#themeChanged {
+    margin: 2px 0 2px;
+}
+
 .addpointsbtn {
-    background-color: #7a7af9;
-    border-color: #6262c7;
+    background-color: var(--addptn-button-background-color);
+    border-color: var(--addptn-button-border-color);
+    color: var(--addptn-button-text-color);
     width: fit-content;
 }
 
 .addplayerbtn {
-    background-color: #b68a1b;
-    border-color: #947119;
+    background-color: var(--addplr-button-background-color);
+    border-color: var(--addplr-button-border-color);
+    color: var(--addplr-button-text-color);
+}
+
+.themebtn {
+    background-color: var(--theme-button-background-color);
+    border-color: var(--theme-button-border-color);
+    color: var(--theme-button-text-color);
+    font-weight: lighter;
+    font-size: 8px;
+    padding: 5px;
 }

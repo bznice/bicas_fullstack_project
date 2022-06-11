@@ -4,11 +4,14 @@
 <head>
   <title>Bicas</title>
   <link rel="stylesheet" type="text/css" href="frontend-js/src/css/style.css">
+  <link rel="stylesheet" type="text/css" href="frontend-js/src/css/themes.css">
   <script src="frontend-js/src/angular/angular.js"></script>
   <script src="frontend-js/src/control/bicas.js"></script>
 </head>
 
-<body ng-controller="bicasCtrl">
+<body ng-controller="bicasCtrl" class="light">
+  <button class="btn themebtn" ng-click="toggleTheme()">Toggle Theme</button>
+  <span id="themeChanged"></span>
   <h1>{{app}}</h1>
   <div class="division">
     <table class="tablePlayers" ng-if="playersN">
@@ -40,9 +43,9 @@
     </table>
     <p ng-if="playersN"></p>
     <button class="btn addpointsbtn" ng-click="addPoints()" ng-if="playersN">Add Points</button>
-    <span id="errorCheckboxes" ng-if="playersN"></span>
+    <span id="errorPointsCheckboxes" ng-if="playersN"></span>
     <h3>Insert player:</h3>
-    <input class="form-control" type="text" ng-model="player.name" placeholder="Name" />
+    <input class="form-control form-player" type="text" ng-model="player.name" placeholder="Name" />
     <button class="btn addplayerbtn" ng-click="addPlayer(player)" ng-disabled="!player.name">
       Add Player
     </button>
