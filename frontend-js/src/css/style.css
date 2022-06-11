@@ -7,6 +7,8 @@ body {
     justify-content: center;
 }
 
+#errorPointsCheckboxes,
+#themeChanged,
 body,
 .btn {
     font-family: 'Lucida Sans';
@@ -15,18 +17,28 @@ body,
 h1 {
     font-style: oblique;
     text-align: center;
+    text-shadow: 1px 1px;
 }
 
 h3 {
     margin-top: 0;
 }
 
+#errorPointsCheckboxes,
+#themeChanged,
 h1,
 h3,
 th,
-.btn,
-#errorCheckboxes {
+.btn {
     font-weight: bold;
+}
+
+#errorPointsCheckboxes,
+#themeChanged,
+h1,
+h3,
+th {
+    text-shadow: 1px 1px;
 }
 
 h3,
@@ -110,14 +122,14 @@ th {
     padding: 5px;
 }
 
-#errorCheckboxes,
+#errorPointsCheckboxes,
 #themeChanged,
 .addpointsbtn,
 .themebtn {
     justify-self: right;
 }
 
-#errorCheckboxes,
+#errorPointsCheckboxes,
 #themeChanged {
     margin: 2px 0 2px;
 }

@@ -75,13 +75,15 @@ angular.module("bicas")
 
     var validatePointsAndCheckboxes = function () {
         var error = document.getElementById("errorPointsCheckboxes");
-        if ($scope.players.filter(player => player.dealer).length > 1) {
+        if ($scope.players.filter(player => player.dealer).length > 1
+                && $scope.players.filter(player => player.points == "").length == 0) {
             error.textContent = "Please select 0 or 1 dealer in checkboxes, only!";
             error.style.color = "red";
             setTimeout(clearDemo, 2000, error);
             return false;
         }
-        if ($scope.players.filter(player => player.points == "").length > 0) {
+        if ($scope.players.filter(player => player.points == "").length > 0
+                && $scope.players.filter(player => player.dealer).length < 2) {
             error.textContent = "Please insert all points (even zero to winner)!";
             error.style.color = "red";
             setTimeout(clearDemo, 2000, error);

@@ -27,27 +27,27 @@
 
 .dark {
     --body-background-color: #121212;
-    --body-text-color: #e1e1e1;
+    --body-text-color: #c6c6c6;
     --table-even-background-color: #2e2e2e;
     --table-odd-background-color: #121212;
-    --table-border-color: #e1e1e1;
+    --table-border-color: #9c9c9c;
     --division-background-color: #1e1e1e;
-    --delete-button-background-color: #BB0000;
-    --delete-button-border-color: #AA0000;
-    --delete-button-text-color: #454545;
+    --delete-button-background-color: #AA0000;
+    --delete-button-border-color: #990000;
+    --delete-button-text-color: #121212;
     --addptn-button-background-color: #000066;
     --addptn-button-border-color: #000055;
-    --addptn-button-text-color: #454545;
+    --addptn-button-text-color: #e1e1e1;
     --addplr-button-background-color: #9c9c9c;
     --addplr-button-border-color: #8c8c8c;
-    --addplr-button-text-color: #454545;
+    --addplr-button-text-color: #343434;
     --theme-button-background-color: #ededed;
     --theme-button-border-color: #dddddd;
     --theme-button-text-color: #121212;
-    --addplr-input-background-color: #ededed;
-    --addplr-input-border-color: #dcdcdc;
+    --addplr-input-background-color: #dcdcdc;
+    --addplr-input-border-color: #cbcbcb;
     --addplr-input-text-color: #121212;
-    --addptn-input-background-color: #ededed;
-    --addptn-input-border-color: #dcdcdc;
+    --addptn-input-background-color: #dcdcdc;
+    --addptn-input-border-color: #cbcbcb;
     --addptn-input-text-color: #121212;
 }
