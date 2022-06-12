@@ -3,61 +3,61 @@
 body {
     background-color: var(--body-background-color);
     color: var(--body-text-color);
+    margin: 10px;
+}
+
+h1 {
+    text-shadow: var(--body-shadow-color) 1px 1px;
+    font-style: oblique;
+    text-align: center;
+}
+
+h3,
+.divRules {
+    text-align: left;
+}
+
+.divRules {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.pRules {
+    font-family: 'Courier New';
+    font-size: 12px;
+    font-weight: 550;
+    margin: 0 0 5px;
+    border: 0;
+    padding: 0;
+}
+
+body,
+.division,
+.roundTable,
+.rules {
     display: grid;
+    grid-template-columns: 100%;
     justify-content: center;
 }
 
+body,
 #errorPointsCheckboxes,
 #themeChanged,
-body,
 .btn {
     font-family: 'Lucida Sans';
 }
 
-h1 {
-    font-style: oblique;
-    text-align: center;
-    text-shadow: 1px 1px;
-}
-
-h3 {
-    margin-top: 0;
-}
-
+h1,
+th,
 #errorPointsCheckboxes,
 #themeChanged,
-h1,
-h3,
-th,
 .btn {
     font-weight: bold;
 }
 
-#errorPointsCheckboxes,
-#themeChanged,
-h1,
-h3,
-th {
-    text-shadow: 1px 1px;
-}
-
-h3,
-h4 {
-    text-align: left;
-}
-
-h4 {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 11.5px;
-    margin: 0px;
-    margin-bottom: 2px;
-    border: none;
-    padding: none;
-}
-
 table {
     border-collapse: collapse;
-    width: fit-content;
 }
 
 tr:nth-child(even) {
@@ -73,26 +73,30 @@ th {
     border: 1px solid;
     border-color: var(--table-border-color);
     text-align: center;
+}
+
+th {
+    padding: 3px;
+}
+
+td {
     padding: 8px;
 }
 
 .division {
     background-color: var(--division-background-color);
-    display: grid;
-    justify-content: center;
-    width: fit-content;
     margin: 20px 100px;
     padding: 30px;
     border-radius: 25px;
 }
 
 .form-control {
-    margin-bottom: 5px;
     padding: 5px 15px;
     border-radius: 3px;
 }
 
 .form-points {
+    margin: 0;
     background-color: var(--addptn-input-background-color);
     border-color: var(--addptn-input-border-color);
     color: var(--addptn-input-text-color);
@@ -104,6 +108,27 @@ th {
     background-color: var(--addplr-input-background-color);
     border-color: var(--addplr-input-border-color);
     color: var(--addplr-input-text-color);
+}
+
+#errorPointsCheckboxes,
+#themeChanged,
+.addpointsbtn,
+.themebtn {
+    justify-self: right;
+}
+
+#errorPointsCheckboxes,
+#themeChanged {
+    margin: 2px 0 2px;
+}
+
+#errorPointsCheckboxes {
+    color: var(--error-span-text-color);
+}
+
+#sp {
+    display: grid;
+    grid-template-columns: 85% 15%;
 }
 
 .btn {
@@ -122,26 +147,23 @@ th {
     padding: 5px;
 }
 
-#errorPointsCheckboxes,
-#themeChanged,
-.addpointsbtn,
-.themebtn {
-    justify-self: right;
-}
-
-#errorPointsCheckboxes,
-#themeChanged {
-    margin: 2px 0 2px;
-}
-
 .addpointsbtn {
-    background-color: var(--addptn-button-background-color);
-    border-color: var(--addptn-button-border-color);
-    color: var(--addptn-button-text-color);
+    background-color: var(--addplr-button-background-color);
+    border-color: var(--addplr-button-border-color);
+    color: var(--addplr-button-text-color);
     width: fit-content;
 }
 
-.addplayerbtn {
+h3,
+.form-player,
+.addplayerbtn,
+.infobtn {
+    margin: 0 0 10px;
+}
+
+.addplayerbtn,
+.infobtn {
+    margin: 0 0 10px;
     background-color: var(--addplr-button-background-color);
     border-color: var(--addplr-button-border-color);
     color: var(--addplr-button-text-color);
@@ -151,7 +173,6 @@ th {
     background-color: var(--theme-button-background-color);
     border-color: var(--theme-button-border-color);
     color: var(--theme-button-text-color);
-    font-weight: lighter;
-    font-size: 8px;
+    font-size: 9px;
     padding: 5px;
 }

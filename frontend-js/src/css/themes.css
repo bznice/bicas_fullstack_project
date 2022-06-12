@@ -1,33 +1,33 @@
 .light {
     --body-background-color: #ededed;
     --body-text-color: #121212;
+    --body-shadow-color: #010101;
     --table-border-color: #121212;
-    --table-even-background-color: #9c7600;
-    --table-odd-background-color: #be9a2a;
+    --table-even-background-color: #e6d8b3;
+    --table-odd-background-color: #e6cc7d;
     --division-background-color: #d3b76e;
-    --delete-button-background-color: #AA0000;
-    --delete-button-border-color: #990000;
+    --delete-button-background-color: #aa0000;
+    --delete-button-border-color: #bb0000;
     --delete-button-text-color: #121212;
-    --addptn-button-background-color: #7a7af9;
-    --addptn-button-border-color: #6262c7;
-    --addptn-button-text-color: #121212;
     --addplr-button-background-color: #b68a1b;
-    --addplr-button-border-color: #947119;
+    --addplr-button-border-color: #c79b1b;
     --addplr-button-text-color: #121212;
     --theme-button-background-color: #121212;
-    --theme-button-border-color: #000000;
+    --theme-button-border-color: #232323;
     --theme-button-text-color: #ededed;
     --addplr-input-background-color: #dcdcdc;
-    --addplr-input-border-color: #cbcbcb;
+    --addplr-input-border-color: #ededed;
     --addplr-input-text-color: #121212;
     --addptn-input-background-color: #dcdcdc;
-    --addptn-input-border-color: #cbcbcb;
+    --addplr-input-border-color: #ededed;
     --addptn-input-text-color: #121212;
+    --error-span-text-color: #AA0000;
 }
 
 .dark {
     --body-background-color: #121212;
     --body-text-color: #c6c6c6;
+    --body-shadow-color: #b5b5b5;
     --table-even-background-color: #2e2e2e;
     --table-odd-background-color: #121212;
     --table-border-color: #9c9c9c;
@@ -35,9 +35,6 @@
     --delete-button-background-color: #AA0000;
     --delete-button-border-color: #990000;
     --delete-button-text-color: #121212;
-    --addptn-button-background-color: #000066;
-    --addptn-button-border-color: #000055;
-    --addptn-button-text-color: #e1e1e1;
     --addplr-button-background-color: #9c9c9c;
     --addplr-button-border-color: #8c8c8c;
     --addplr-button-text-color: #343434;
@@ -50,4 +47,5 @@
     --addptn-input-background-color: #dcdcdc;
     --addptn-input-border-color: #cbcbcb;
     --addptn-input-text-color: #121212;
+    --error-span-text-color: #cc0000;
 }

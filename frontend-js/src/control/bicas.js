@@ -1,39 +1,36 @@
 angular.module("bicas", []);
-angular.module("bicas")
-    .controller("bicasCtrl", function ($scope) {
-    $scope.app = "LETS PLAY BICAS!"
+angular.module("bicas").controller("bicasCtrl", function ($scope) {
+    
+    $scope.app = "LETS PLAY BICAS!";
+
+    $scope.rulesButton = false;
+
+    $scope.rulesButtonText = "View Information";
+
+    $scope.players = []
+
+    $scope.playersN = 0
 
     $scope.rulesEN = {
         intro: [
         'This game is kinda similar to Uno.',
-        'While in Uno you must assist the color or the number or symbol,',
-        'in the Bicas your move must assist the suit or the number or figure.'
+        'While in Uno you must assist the color or the number or symbol, in the Bicas your move must assist the suit or the number or figure.'
         ],
         rules: [
-        'Original rules of the Bicas:',
         '- Only one card per player can be played;',
         '- If there is no card to play, the passes (does not go to the deck);',
-        '- When everyone passes, the 1st that passed starts to go to the deck',
-        ' in the round, and so on, UNTIL SOMEONE PLAYS (from then on, it stops',
-        ' going to the deck);',
+        '- When everyone passes, the 1st that passed starts to go to the deck in the round, and so on, UNTIL SOMEONE PLAYS (from then on, it stops going to the deck);',
         '- The round ends when someone finish their cards;',
-        '- When a player has only one card, he must say BICAS when playing the',
-        ' penultimate one, otherwise take it with a CONTRA-BICAS and get 2 cards',
-        ' (it is recommended to give a delay between half and a second before',
-        ' attacking with the CONTRA-BICAS);',
-        '- The game ends when you want, when you all get tired, or when',
-        ' someone reaches the 420 or 422 score points.'
+        '- When a player has only one card, he must say BICAS when playing the penultimate one, otherwise take it with a CONTRA-BICAS and get 2 cards (it is recommended to give a delay between half and a second before attacking with the CONTRA-BICAS);',
+        '- The game ends when you want, when you all get tired, or when someone reaches the 420 or 422 score points.'
         ],
         special: [
-        'Special cards:',
         '- 2: forbids the next player;',
         '- 7: forces the next player to pick up 2 cards;',
         '- Q: revert the direction of the round;',
-        '- J: change the suit (black card - it is the only card on which you',
-        ' are not forced to attend the suit)'
+        '- J: change the suit (black card - it is the only card on which you are not forced to attend the suit)'
         ],
         points: [
-        'Points:',
         '- K: 40;',
         '- J: 30;',
         '- Q: 20;',
@@ -42,9 +39,12 @@ angular.module("bicas")
         ]
     }
 
-    $scope.players = []
-
-    $scope.playersN = 0
+    $scope.showHideInfo = function () {
+        $scope.rulesButton = !$scope.rulesButton;
+        $scope.rulesButtonText = $scope.rulesButton
+            ? "Hide Information"
+            : "View Information";
+    }
 
     $scope.addPlayer = function (player) {
         player.score = "0";
@@ -65,7 +65,6 @@ angular.module("bicas")
                     : theme.replace("dark", "light");
         logThemeChanged.textContent = "Theme changet to"
                     + (document.body.className.includes("light") ? " light" : " dark");
-        logThemeChanged.style.color = document.body.className.includes("light") ? "black" : "white";
         setTimeout(clearDemo, 2000, logThemeChanged);
     }
   
@@ -78,21 +77,18 @@ angular.module("bicas")
         if ($scope.players.filter(player => player.dealer).length > 1
                 && $scope.players.filter(player => player.points == "").length == 0) {
             error.textContent = "Please select 0 or 1 dealer in checkboxes, only!";
-            error.style.color = "red";
             setTimeout(clearDemo, 2000, error);
             return false;
         }
         if ($scope.players.filter(player => player.points == "").length > 0
                 && $scope.players.filter(player => player.dealer).length < 2) {
             error.textContent = "Please insert all points (even zero to winner)!";
-            error.style.color = "red";
             setTimeout(clearDemo, 2000, error);
             return false;
         }
         if ($scope.players.filter(player => player.dealer).length > 1
                 && $scope.players.filter(player => player.points == "").length > 0) {
             error.textContent = "WTF ARE YOU DOING?!?!";
-            error.style.color = "red";
             setTimeout(clearDemo, 2000, error);
             return false;
         }
