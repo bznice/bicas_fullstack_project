@@ -12,6 +12,10 @@ h1 {
     text-align: center;
 }
 
+h3 {
+    margin: 0 0 10px;
+}
+
 h3,
 .divRules {
     text-align: left;
@@ -43,16 +47,14 @@ body,
 
 body,
 #errorPointsCheckboxes,
-#themeChanged,
-.btn {
+#themeChanged {
     font-family: 'Lucida Sans';
 }
 
 h1,
 th,
 #errorPointsCheckboxes,
-#themeChanged,
-.btn {
+#themeChanged {
     font-weight: bold;
 }
 
@@ -108,12 +110,11 @@ td {
     background-color: var(--addplr-input-background-color);
     border-color: var(--addplr-input-border-color);
     color: var(--addplr-input-text-color);
+    margin: 0 0 10px;
 }
 
 #errorPointsCheckboxes,
-#themeChanged,
-.addpointsbtn,
-.themebtn {
+#themeChanged {
     justify-self: right;
 }
 
@@ -129,50 +130,4 @@ td {
 #sp {
     display: grid;
     grid-template-columns: 85% 15%;
-}
-
-.btn {
-    font-size: 12px;
-    text-align: center;
-    padding: 5px 15px;
-    border-radius: 3px;
-    border-width: 1px;
-}
-
-.deletebtn {
-    background-color: var(--delete-button-background-color);
-    border-color: var(--delete-button-border-color);
-    color: var(--delete-button-text-color);
-    border: 0;
-    padding: 5px;
-}
-
-.addpointsbtn {
-    background-color: var(--addplr-button-background-color);
-    border-color: var(--addplr-button-border-color);
-    color: var(--addplr-button-text-color);
-    width: fit-content;
-}
-
-h3,
-.form-player,
-.addplayerbtn,
-.infobtn {
-    margin: 0 0 10px;
-}
-
-.addplayerbtn,
-.infobtn {
-    margin: 0 0 10px;
-    background-color: var(--addplr-button-background-color);
-    border-color: var(--addplr-button-border-color);
-    color: var(--addplr-button-text-color);
-}
-
-.themebtn {
-    background-color: var(--theme-button-background-color);
-    border-color: var(--theme-button-border-color);
-    color: var(--theme-button-text-color);
-    font-size: 9px;
-    padding: 5px;
 }
