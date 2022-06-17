@@ -1,0 +1,33 @@
+@import 'themes.css';
+
+.divRules {
+    text-align: left;
+    margin: 0;
+}
+
+.pRules {
+    font-family: 'Courier New';
+    font-size: 12px;
+    font-weight: 550;
+    margin: 0 0 5px;
+}
+
+.rules {
+    grid-template-columns: 100%;
+    justify-content: center;
+}
+
+#sp {
+    grid-template-columns: 85% 15%;
+}
+
+.divRules,
+.pRules {
+    border: 0;
+    padding: 0;
+}
+
+.rules,
+#sp {
+    display: grid;
+}

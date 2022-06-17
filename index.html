@@ -6,14 +6,19 @@
   <title>Bicas</title>
   <link rel="icon" type="image/x-icon" href="frontend-js/lib/icons/favicon.ico">
   <link rel="stylesheet" type="text/css" href="frontend-js/src/css/style.css">
-  <link rel="stylesheet" type="text/css" href="frontend-js/src/css/button.css">
   <link rel="stylesheet" type="text/css" href="frontend-js/src/css/themes.css">
+  <link rel="stylesheet" type="text/css" href="frontend-js/src/css/table.css">
+  <link rel="stylesheet" type="text/css" href="frontend-js/src/css/info.css">
+  <link rel="stylesheet" type="text/css" href="frontend-js/src/css/button.css">
+  <link rel="stylesheet" type="text/css" href="frontend-js/src/css/input.css">
+  <link rel="stylesheet" type="text/css" href="frontend-js/src/css/span.css">
   <script src="frontend-js/lib/angular/angular.js"></script>
   <script src="frontend-js/src/control/bicas.js"></script>
+  <script src="frontend-js/src/data/info.js"></script>
 
 </head>
 
-<body ng-controller="bicasCtrl" class="light">
+<body ng-controller="bicasCtrl">
 
   <button class="btn themebtn" ng-click="toggleTheme()">Toggle Theme</button>
   <span id="themeChanged"></span>
@@ -27,6 +32,8 @@
     
     <h3>Insert player:</h3>
 
+    <span id="errorPlayerExists" class="errorSpan"></span>
+
     <input class="form-control form-player" type="text" ng-model="player.name" placeholder="Name" />
     
     <button class="btn addplayerbtn" ng-click="addPlayer(player)" ng-disabled="!player.name">
@@ -35,7 +42,7 @@
     
     <button class="btn infobtn" ng-click="showHideInfo()">{{rulesButtonText}}</button>
     
-    <ng-include src="'frontend-js/src/html/rules.html'"
+    <ng-include src="'frontend-js/src/html/info.html'" ng-controller="infoCtrl"
       ng-if="rulesButton" class="rules"></ng-include>
 
   </div>
