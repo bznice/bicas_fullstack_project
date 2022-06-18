@@ -8,21 +8,34 @@ angular.module("bicas").controller("bicasCtrl", ['$scope', function ($scope) {
     document.body.className = arrayTheme.some(theme => document.body.className.includes(theme))
         ? document.body.className : "light " + document.body.className;
 
-    $scope.app = "LETS PLAY BICAS!";
+    $scope.appInfoButton = false;
 
-    $scope.rulesButton = true;
+    $scope.gameInfoButton = false;
 
-    $scope.rulesButtonText = ($scope.rulesButton ? "Hide " : "View ") + "Information";
+    $scope.appInfoButtonText = ($scope.appInfoButton ? "Hide " : "View ") + "App Information";
+
+    $scope.gameInfoButtonText = ($scope.gameInfoButton ? "Hide " : "View ") + "Game Information";
 
     $scope.players = [];
 
     $scope.playersN = 0;
 
+    $scope.themeSpanTimeout = "";
+
+    $scope.pointsSpanTimeout = "";
+
+    $scope.playerExistSpanTimeout = "";
+
     //----------------- INFO METHODS -----------------------------------------
 
-    $scope.showHideInfo = function () {
-        $scope.rulesButton = !$scope.rulesButton;
-        $scope.rulesButtonText = ($scope.rulesButton ? "Hide " : "View ") + "Information";
+    $scope.showHideAppInfo = function () {
+        $scope.appInfoButton = !$scope.appInfoButton;
+        $scope.appInfoButtonText = ($scope.appInfoButton ? "Hide " : "View ") + "App Information";
+    }
+
+    $scope.showHideGameInfo = function () {
+        $scope.gameInfoButton = !$scope.gameInfoButton;
+        $scope.gameInfoButtonText = ($scope.gameInfoButton ? "Hide " : "View ") + "Game Information";
     }
 
     //----------------- TOGGLE THEME METHODS ---------------------------------
@@ -35,7 +48,8 @@ angular.module("bicas").controller("bicasCtrl", ['$scope', function ($scope) {
                     : theme.replace("dark", "light");
         logThemeChanged.textContent = "Theme changet to"
                     + (document.body.className.includes("light") ? " light" : " dark");
-        setTimeout(clearDemo, 2000, logThemeChanged);
+        if($scope.themeSpanTimeout != "") clearTimeout($scope.themeSpanTimeout);
+        $scope.themeSpanTimeout = setTimeout(clearDemo, 2000, logThemeChanged, $scope.themeSpanTimeout);
     }
 
     //----------------- ADD/DELETE PLAYERS METHODS ---------------------------
@@ -110,7 +124,8 @@ angular.module("bicas").controller("bicasCtrl", ['$scope', function ($scope) {
     var playerAlreadyExists = function (player) {
         var logErrorPlayerExists = document.getElementById("errorPlayerExists");
         logErrorPlayerExists.textContent = "This player already exists!";
-        setTimeout(clearDemo, 2000, logErrorPlayerExists);
+        if($scope.playerExistSpanTimeout != "") clearTimeout($scope.playerExistSpanTimeout);
+        $scope.playerExistSpanTimeout = setTimeout(clearDemo, 2000, logErrorPlayerExists, $scope.playerExistSpanTimeout);
         player.name = "";
     }
 
@@ -158,22 +173,37 @@ angular.module("bicas").controller("bicasCtrl", ['$scope', function ($scope) {
 
     var validatePointsAndCheckboxes = function () {
         var error = document.getElementById("errorPointsCheckboxes");
-        if ($scope.players.filter(player => player.dealer).length > 1
-                && $scope.players.filter(player => player.points == "").length == 0) {
-            error.textContent = "Please select 0 or 1 dealer in checkboxes, only!";
-            setTimeout(clearDemo, 2000, error);
-            return false;
-        }
-        if ($scope.players.filter(player => player.points == "").length > 0
-                && $scope.players.filter(player => player.dealer).length < 2) {
-            error.textContent = "Please insert all points (even zero to winner)!";
-            setTimeout(clearDemo, 2000, error);
-            return false;
-        }
-        if ($scope.players.filter(player => player.dealer).length > 1
-                && $scope.players.filter(player => player.points == "").length > 0) {
+        if($scope.players.filter(player => player.dealer).length > 1
+                && $scope.players.filter(player => player.points == "").length > 0
+                && $scope.players.filter(player => player.points == "0").length == 0
+                && $scope.players.filter(player => player.points == "0").length > 1) {
             error.textContent = "WTF ARE YOU DOING?!?!";
-            setTimeout(clearDemo, 2000, error);
+            if($scope.pointsSpanTimeout != "") clearTimeout($scope.pointsSpanTimeout);
+            $scope.pointsSpanTimeout = setTimeout(clearDemo, 2000, error, $scope.pointsSpanTimeout);
+            return false;
+        }
+        if($scope.players.filter(player => player.dealer).length > 1) {
+            error.textContent = "Please select 0 or 1 dealer in checkboxes, only!";
+            if($scope.pointsSpanTimeout != "") clearTimeout($scope.pointsSpanTimeout);
+            $scope.pointsSpanTimeout = setTimeout(clearDemo, 2000, error, $scope.pointsSpanTimeout);
+            return false;
+        }
+        if($scope.players.filter(player => player.points == "").length > 0) {
+            error.textContent = "Please insert all points (even zero to winner)!";
+            if($scope.pointsSpanTimeout != "") clearTimeout($scope.pointsSpanTimeout);
+            $scope.pointsSpanTimeout = setTimeout(clearDemo, 2000, error, $scope.pointsSpanTimeout);
+            return false;
+        }
+        if($scope.players.filter(player => player.points == "0").length == 0) {
+            error.textContent = "This round don't have winner!";
+            if($scope.pointsSpanTimeout != "") clearTimeout($scope.pointsSpanTimeout);
+            $scope.pointsSpanTimeout = setTimeout(clearDemo, 2000, error, $scope.pointsSpanTimeout);
+            return false;
+        }
+        if($scope.players.filter(player => player.points == "0").length > 1) {
+            error.textContent = "Only one winner per round!";
+            if($scope.pointsSpanTimeout != "") clearTimeout($scope.pointsSpanTimeout);
+            $scope.pointsSpanTimeout = setTimeout(clearDemo, 2000, error, $scope.pointsSpanTimeout);
             return false;
         }
         return true;
@@ -181,8 +211,9 @@ angular.module("bicas").controller("bicasCtrl", ['$scope', function ($scope) {
   
     //----------------- GENERAL METHODS --------------------------------------
 
-    clearDemo = function (log) {
+    clearDemo = function (log, timeoutId) {
         log.textContent = "";
+        timeoutId = "";
     }
     
     //------------------------------------------------------------------------

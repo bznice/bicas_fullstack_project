@@ -18,5 +18,6 @@
     background-color: var(--addplr-input-background-color);
     border-color: var(--addplr-input-border-color);
     color: var(--addplr-input-text-color);
+    font-size: 12px;
     margin: 0 0 10px;
 }
